@@ -7,5 +7,5 @@ Basically this Python Program can be divided into two parts:
 
 ### Libraries Used
 
-- [QR Code](https://pypi.org/project/qrcode/)
 - [Pillow](https://pypi.org/project/Pillow/)
+- [QR Code](https://pypi.org/project/qrcode/)
