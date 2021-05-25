@@ -6,5 +6,5 @@
 
 - [Akash Shiva](https://github.com/akaProgramer)
 - [Ankit Mahor]()
-- [Anshuman Bhadoria]()
+- [Anshuman Bhadoria](https://github.com/anshuman234)
 - [Jugal Kishore](https://github.com/crazyuploader)
