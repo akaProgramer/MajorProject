@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-This is a Python Program to display QR Code from an input.
+This is a Python Program to generate QR Code from an input.
 """
 
 __author__ = "Jugal Kishore"
@@ -44,6 +44,9 @@ def save_qrcode(qr_obj):
 
 
 def main():
+    """
+    Main Function of the QR Code Generator Program.
+    """
     print("QR Code Generator")
     print("")
     print("Enter String Value: ")
