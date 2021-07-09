@@ -12,5 +12,10 @@ class text_extracter:
             self.text += self.result[1] + " \n"
         print(self.text)
 
-obj = text_extracter()
-obj.extrated_text()
+
+def main():
+    obj = text_extracter()
+    obj.extrated_text()
+
+if __name__ == "__main__":
+    main()
