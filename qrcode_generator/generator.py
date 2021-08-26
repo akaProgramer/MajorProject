@@ -4,7 +4,7 @@
 This is a Python Program to generate QR Code from an input.
 """
 
-__author__ = "Jugal Kishore"
+__author__ = "Jugal Kishore <me@devjugal.com>"
 
 
 try:
