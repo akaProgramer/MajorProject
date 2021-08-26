@@ -84,7 +84,7 @@ def main():
     print("")
     print(" 1. Convert PNG to JPG/JPEG")
     print(" 2. Convert JPG/JPEG to PNG")
-    print(" Nothing to exit!")
+    print(" Nothing (press enter) to exit!")
     print("")
     choice = input("Enter your choice: ")
     if not choice:
