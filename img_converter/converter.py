@@ -13,6 +13,13 @@ import os
 import glob
 
 
+# Global Variable(s)
+if os.name == "nt":
+    SLASH = "\\"
+else:
+    SLASH = "/"
+
+
 class convert:
     """
     An image converter class which can convert a PNG, JPEG to JPEG, PNG interchangably.
@@ -36,12 +43,12 @@ class convert:
             print(f"Created target directory: {self.target_directory}")
             print("")
 
-        for file in glob.glob(f"{self.source_directory}/*.png"):
+        for file in glob.glob(f"{self.source_directory}{SLASH}*.png"):
             if file.endswith(".png"):
                 print("Converting: " + file)
                 im = Image.open(file, "r")
                 rgb_image = im.convert("RGB")
-                target_file = self.target_directory + "/" + file.split("/")[-1].split(".")[0] + ".jpg"
+                target_file = self.target_directory + SLASH + file.split(SLASH)[-1].split(".")[0] + ".jpg"
                 rgb_image.save(target_file)
                 print("Converted: " + target_file)
                 print("")
