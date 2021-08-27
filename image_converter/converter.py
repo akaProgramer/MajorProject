@@ -137,6 +137,9 @@ def main():
     if not choice:
         print("Exiting...")
         exit(0)
+    if type(choice) is not int:
+        print("Invalid choice, exiting...")
+        exit(1)
 
     print("")
     source_directory = str(input("Please enter the source directory: "))
