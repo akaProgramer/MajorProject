@@ -1,6 +1,5 @@
 import easyocr
-import cv2
-import numpy as np
+import os
 
 class text_extracter:
     def __init__(self):
@@ -11,6 +10,9 @@ class text_extracter:
         for self.result in self.results:
             self.text += self.result[1] + " \n"
         print(self.text)
+        with open('extracted.txt', 'w' , encoding='utf-8') as f:
+            f.write(self.text)
+        os.system('extracted.txt')
 
 
 def main():
