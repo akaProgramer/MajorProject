@@ -1,0 +1,68 @@
+Security OBCA : ३०७ | 7 
+Computer Network 
+18. 
+A hash function must meet 
+criteria 
+(a) two 
+three 
+(c) four 
+(d) none of the above 
+१९ 
+signature 
+is included 
+in 
+the document; 
+signature is 
+separate entity 
+(a) conventional; digital 
+(b) digital; digital 
+(c) either (a) or (b) 
+(d) neither (a) nor (b) 
+20. 
+Digital signature provides 
+(a) authentication 
+(b) nonrepudiation 
+(c) both (a) and (b) 
+(d) neither (a) nor (b) 
+२१. Digital signature cannot provide 
+for the message 
+(a) integrity 
+(b) confidentiality 
+(c) non 
+repudiation 
+(d) authentication 
+22. If 
+is needed, a 
+cryptosystem must be 
+application scheme 
+over the scheme. 
+(a) integrity 
+(b) confidentiality 
+(c) nonrepudiation 
+(d) authentication 
+23. 
+A digital signature needs a(n) 
+(a) symmetric key 
+(b) asymmetric key 
+(c) either (a) or (b) 
+(d) neither (a) nor (b) 
+२४. A witness used in entity authentication is 
+(a) something know 
+(b) something possessed 
+(c) something inherent 
+(d) all of the above 
+२५. MAC stands for 
+(a)message authentication code. 
+It 
+(b) message authentication connection. 
+(c) message authentication control 
+(d) message authentication cipher 
+26. 
+A sender must not be able to deny sending a message that 
+he or she, in fact, did send is known as 
+(a) Message Nonrepudiation. 
+(b) Message Integrity 
+९. 
+(c) Message Confidentiality 
+(d) Message Sending 
+system 
