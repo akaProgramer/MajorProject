@@ -153,7 +153,7 @@ def main():
         exit(0)
 
     print("")
-    source_directory = str(input("Please enter the source directory: "))
+    source_directory = str(input("Please enter the source directory/file: "))
     print("")
     if not source_directory:
         print("Exiting...")
