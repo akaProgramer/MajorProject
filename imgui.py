@@ -1,3 +1,4 @@
+from re import S
 import sys 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication,QFileDialog,QInputDialog, QLabel, QLineEdit, QSizeGrip, QWidget, QMainWindow, QFrame, QPushButton, QComboBox,QVBoxLayout
@@ -7,7 +8,7 @@ from PIL import Image, BmpImagePlugin
 import subprocess, os, platform
 from PyQt5.QtCore import Qt, QSize
 from qrcode_generator import generator as QR_Generator
-
+from OCR import OCR 
 
 def open_file(filepath):
         if platform.system() == 'Darwin':       # macOS
@@ -46,6 +47,17 @@ class App(QMainWindow):
         generate.save()
         open_file("qrcode.png")
         self.statusBar().showMessage("Message: QR Code generated")
+
+    def select_file_path(self):
+        self.path_fileName, _ = QFileDialog.getOpenFileName(self,"Select File", "","All Files (*);;JPEG  (*.jpeg);;JPG  (*.jpg);;PNG  (*.png)")
+        print(self.path_fileName)
+        self.image_extractor_path.setText(self.path_fileName)
+
+    def ocr_extractor(self,event):
+        print("akash")
+        text_ext = OCR.text_extracter()
+        text_ext.extrated_text(self.path_fileName)
+
 
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -590,13 +602,14 @@ class App(QMainWindow):
         self.browse_button_extractor.setText("....")
         self.browse_button_extractor.move(285,173.5)
         self.browse_button_extractor.setObjectName("browse_button_ext")
-        self.browse_button_extractor.clicked.connect(self.select_file)
+        self.browse_button_extractor.clicked.connect(self.select_file_path)
 
 
-        self.generate_button = QPushButton(self.extractor_expanded)
-        self.generate_button.setText("Extract")
-        self.generate_button.move(100,289)
-        self.generate_button.setObjectName("ext_button")
+        self.extractor_button = QPushButton(self.extractor_expanded)
+        self.extractor_button.setText("Extract")
+        self.extractor_button.move(100,289)
+        self.extractor_button.setObjectName("ext_button")
+        self.extractor_button.mousePressEvent = self.ocr_extractor
         
         self.show()
 

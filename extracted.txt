@@ -1,68 +1,88 @@
-Security OBCA : ३०७ | 7 
-Computer Network 
-18. 
-A hash function must meet 
-criteria 
-(a) two 
-three 
-(c) four 
-(d) none of the above 
-१९ 
-signature 
-is included 
-in 
-the document; 
-signature is 
-separate entity 
-(a) conventional; digital 
-(b) digital; digital 
-(c) either (a) or (b) 
-(d) neither (a) nor (b) 
-20. 
-Digital signature provides 
-(a) authentication 
-(b) nonrepudiation 
-(c) both (a) and (b) 
-(d) neither (a) nor (b) 
-२१. Digital signature cannot provide 
-for the message 
-(a) integrity 
-(b) confidentiality 
-(c) non 
-repudiation 
-(d) authentication 
-22. If 
-is needed, a 
-cryptosystem must be 
-application scheme 
-over the scheme. 
-(a) integrity 
-(b) confidentiality 
-(c) nonrepudiation 
-(d) authentication 
-23. 
-A digital signature needs a(n) 
-(a) symmetric key 
-(b) asymmetric key 
-(c) either (a) or (b) 
-(d) neither (a) nor (b) 
-२४. A witness used in entity authentication is 
-(a) something know 
-(b) something possessed 
-(c) something inherent 
-(d) all of the above 
-२५. MAC stands for 
-(a)message authentication code. 
-It 
-(b) message authentication connection. 
-(c) message authentication control 
-(d) message authentication cipher 
-26. 
-A sender must not be able to deny sending a message that 
-he or she, in fact, did send is known as 
-(a) Message Nonrepudiation. 
-(b) Message Integrity 
-९. 
-(c) Message Confidentiality 
-(d) Message Sending 
-system 
+ey were 
+Computer Network Security (BCA : ३०७) 
+rrity 
+३४. Which of the 
+islare methods of 
+providing secure 
+communication  between 
+entities through the use of 
+decrypted at 
+mathematical coding? 
+(a) Digital signature encryption 
+(b) Public 
+encryption 
+(c) Private 
+encryption 
+eria of 
+(d) All of the above 
+३५. Which 
+is 
+the 
+largest   disadvantage 
+0f 
+the 
+symmetric 
+C. 
+Encryption? 
+(a) more 
+complex 
+and 
+therefore 
+mOre 
+time consuming 
+calculations 
+(b) Problem of the secure transmission of the Secret 
+(c) Less secure 
+encryption function 
+(d) Isn t 
+any more 
+36. 
+increases the redundancy of plain text 
+nponent of 
+confusion 
+(b) diffusion 
+the security 
+(c) both confusion and diffusion 
+(d) neither confusion nor diffusion 
+ill be used 
+३७. A digital signature is 
+maintaining 
+(a) scanned signature 
+(b) signature in 
+form 
+established 
+(c) encrypting information 
+y 
+(d) handwritten signature 
+३८. Which of the 
+following is not a property of Hash Function? 
+(a) Pre Image Resistance 
+(b) Compression 
+(c) Fixed Length Output 
+(d) None of the above 
+Web 
+३९. Which of the following security services cannot be achieved 
+server Or 
+the Hash functions? 
+OR 
+Which of the following is not possible through hash value? 
+d manner 
+(a) Password Check 
+(b) Data Integrity check 
+st 
+(c) Digital Signatures 
+(d) Data retrieval in its original form 
+sent, 
+following 
+ling 
+Uwo 
+key 
+key 
+ing 
+message 
+Key 
+used 
+(a) 
+binary 
+using 
+and 
