@@ -4,11 +4,18 @@ from PyQt5.QtWidgets import QApplication,QFileDialog,QInputDialog, QLabel, QLine
 from PyQt5.QtGui import QColor, QFont, QIcon, QImage, QLinearGradient, QPalette, QBrush,QPixmap
 import PIL
 from PIL import Image, BmpImagePlugin
-import os 
+import subprocess, os, platform
 from PyQt5.QtCore import Qt, QSize
+from qrcode_generator import generator as QR_Generator
 
 
- 
+def open_file(filepath):
+        if platform.system() == 'Darwin':       # macOS
+            subprocess.call(('open', filepath))
+        elif platform.system() == 'Windows':    # Windows
+            os.startfile(filepath)
+        else:                                   # linux variants
+            subprocess.call(('xdg-open', filepath))
 
 
 class App(QMainWindow):
@@ -30,8 +37,14 @@ class App(QMainWindow):
         with open("design.css", "r") as f:
             stylesheet = f.read()
         self.setStyleSheet(stylesheet)
-
         self.initUI()
+
+    def generate_qr(self, event):
+        self.Qr_text = self.image_quality_f.text()
+        generate = QR_Generator.Generator(self.Qr_text)
+        generate.generate()
+        generate.save()
+        open_file("qrcode.png")
 
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -528,7 +541,8 @@ class App(QMainWindow):
         self.generate_button.setText("Generate")
         self.generate_button.move(100,289)
         self.generate_button.setObjectName("generate_button")
-        
+        self.generate_button.mousePressEvent = self.generate_qr
+
         # *****************TEXT EXTRACTOR*******************************TEXT EXTRACTOR**********************************TEXT EXTRACTOR**********************************************************
 
         self.extractor_main = QFrame(self)
