@@ -9,6 +9,8 @@ import subprocess, os, platform
 from PyQt5.QtCore import Qt, QSize
 from qrcode_generator import generator as QR_Generator
 from OCR import OCR 
+from image_converter import converter
+
 
 def open_file(filepath):
         if platform.system() == 'Darwin':       # macOS
@@ -48,6 +50,8 @@ class App(QMainWindow):
         open_file("qrcode.png")
         self.statusBar().showMessage("Message: QR Code generated")
 
+    
+
     def select_file_path(self):
         self.path_fileName, _ = QFileDialog.getOpenFileName(self,"Select File", "","All Files (*);;JPEG  (*.jpeg);;JPG  (*.jpg);;PNG  (*.png)")
         print(self.path_fileName)
@@ -59,9 +63,67 @@ class App(QMainWindow):
             text_ext.extrated_text(self.path_fileName)
         except Exception as f:
             self.statusBar().showMessage("Message: please select appropriate file")
-        finally: 
-            self.statusBar().showMessage("Message: please select appropriate file")
+
+    def extension_choosen(self):
+        print(self.qcombo_ext.currentText())
+        if self.qcombo_ext.currentText()== "jpg":
+            return 1
+        elif self.qcombo_ext.currentText()== "png":
+            return 2
+        elif self.qcombo_ext.currentText()== "pdf":
+            return 3
         
+        
+        
+    def select_file_path_convertor(self):
+        self.convert_path, _ = QFileDialog.getOpenFileName(self,"Select File", "","All Files (*);;JPEG  (*.jpeg);;JPG  (*.jpg);;PNG  (*.png)")
+        self.image_conv_path.setText(self.convert_path)
+
+
+    def convertor(self):
+        convertor_object = converter.Convert(self.convert_path, self.convert_path, True)
+        print(self.convert_path)
+        option = self.extension_choosen()
+        print(option)
+        try:
+            if option == 1:
+                convertor_object.png_to_jpg()
+            elif option == 2:
+                convertor_object.jpg_to_png()
+            elif option == 3:
+                convertor_object.jgp_to_pdf()
+            self.statusBar().showMessage("Converted Sucessfully")
+        except:
+            self.statusBar().showMessage("Message: please select appropriate file")
+
+
+    def select_source_folder_conv(self):
+        self.source_folder_conv = str(QFileDialog.getExistingDirectory(self, "Select Folder"))
+        print(self.source_folder_conv)
+        self.folder_path_conv.setText(self.source_folder_conv)
+
+
+    def select_dest_folder_conv(self):
+        self.source_folder_conv_ = str(QFileDialog.getExistingDirectory(self, "Select Folder"))
+        print(self.source_folder_conv_)
+        self.d_folder_conv.setText(self.source_folder_conv_)
+
+    def multi_convertor(self):
+        print(self.source_folder_conv_)
+        print(self.source_folder_conv)
+        convertor_object = converter.Convert(self.source_folder_conv, self.source_folder_conv_, False)
+        option = self.extension_choosen()
+        print(option)
+        try:
+            if option == 1:
+                convertor_object.png_to_jpg()
+            elif option == 2:
+                convertor_object.jpg_to_png()
+            elif option == 3:
+                convertor_object.jgp_to_pdf()
+            self.statusBar().showMessage("Converted Sucessfully")
+        except:
+            self.statusBar().showMessage("Message: please select appropriate file")
 
 
 
@@ -405,7 +467,7 @@ class App(QMainWindow):
         self.browse_button.setText("....")
         self.browse_button.move(280,135)
         self.browse_button.setObjectName("browse_button_conv")
-        self.browse_button.clicked.connect(self.select_file)
+        self.browse_button.clicked.connect(self.select_file_path_convertor)
 
         self.selectImageQuality_i = QLabel(self.single_img_conv_expanded)
         self.selectImageQuality_i.setText("Choose Extension")
@@ -419,17 +481,16 @@ class App(QMainWindow):
 
         self.qcombo_ext = QComboBox(self.single_img_conv_expanded)
         self.qcombo_ext.move(240,278)
-        self.qcombo_ext.addItem("High")
-        self.qcombo_ext.addItem("Normal")
-        self.qcombo_ext.addItem("Medium")
-        self.qcombo_ext.addItem("Low")
-        self.qcombo_ext.addItem("Very Low")
-        self.qcombo_ext.currentIndexChanged.connect(self.quality_value)
+        self.qcombo_ext.addItem("jpg")
+        self.qcombo_ext.addItem("png")
+        self.qcombo_ext.addItem("pdf")
+        
+        self.qcombo_ext.currentIndexChanged.connect(self.extension_choosen)
 
         self.convert_button = QPushButton(self.single_img_conv_expanded)
         self.convert_button.setText("CONVERT")
         self.convert_button.move(140,360)
-        self.convert_button.clicked.connect(self.resize_pic)
+        self.convert_button.clicked.connect(self.convertor)
         self.convert_button.setObjectName("convert_button")
         # self.compress_button.setStyleSheet({background})
 
@@ -465,7 +526,7 @@ class App(QMainWindow):
         self.browse_button_conv_f.setText("....")
         self.browse_button_conv_f.move(280,130)
         self.browse_button_conv_f.setObjectName("browse_button_conv")
-        self.browse_button_conv_f.clicked.connect(self.select_source_folder)
+        self.browse_button_conv_f.clicked.connect(self.select_source_folder_conv)
 
 
         self.folder_path_conv = QLineEdit(self.multi_img_conv_expanded)
@@ -473,11 +534,11 @@ class App(QMainWindow):
         self.folder_path_conv.move(100,130)
 
 
-        self.select_d_folder = QLabel(self.multi_img_conv_expanded)
-        self.select_d_folder.setText("Select Destination Folder")
-        self.select_d_folder.setFont(QFont('Arial', 11))
-        self.select_d_folder.setObjectName("m_img_p_conv")
-        self.select_d_folder.move(100,300)
+        self.select_d_folder_conv = QLabel(self.multi_img_conv_expanded)
+        self.select_d_folder_conv.setText("Select Destination Folder")
+        self.select_d_folder_conv.setFont(QFont('Arial', 11))
+        self.select_d_folder_conv.setObjectName("m_img_p_conv")
+        self.select_d_folder_conv.move(100,300)
 
         self.d_folder_conv = QLineEdit(self.multi_img_conv_expanded)
         self.d_folder_conv.setObjectName("path")
@@ -487,7 +548,7 @@ class App(QMainWindow):
         self.browse_button_conv_d.setText("....")
         self.browse_button_conv_d.move(280,328)
         self.browse_button_conv_d.setObjectName("browse_button_conv")
-        self.browse_button_conv_d.clicked.connect(self.select_dest_folder)
+        self.browse_button_conv_d.clicked.connect(self.select_dest_folder_conv)
 
         self.selectImageQuality_f = QLabel(self.multi_img_conv_expanded)
         self.selectImageQuality_f.setText("Choose Extension")
@@ -499,18 +560,17 @@ class App(QMainWindow):
         self.image_quality_f.setObjectName("quality_path")
         self.image_quality_f.move(100,210)
 
-        self.qcombo_f = QComboBox(self.multi_img_conv_expanded)
-        self.qcombo_f.move(240,228)
-        self.qcombo_f.addItem("High")
-        self.qcombo_f.addItem("Normal")
-        self.qcombo_f.addItem("Medium")
-        self.qcombo_f.addItem("Low")
-        self.qcombo_f.addItem("Very Low")
-        self.qcombo_f.currentIndexChanged.connect(self.quality_value_f)
+        self.qcombo_ext = QComboBox(self.multi_img_conv_expanded)
+        self.qcombo_ext.move(240,228)
+        self.qcombo_ext.addItem("jpg")
+        self.qcombo_ext.addItem("png")
+        self.qcombo_ext.addItem("pdf")
+        self.qcombo_ext.currentIndexChanged.connect(self.extension_choosen)
 
         self.convert_button = QPushButton(self.multi_img_conv_expanded)
         self.convert_button.setText("CONVERT")
         self.convert_button.move(148,389)
+        self.convert_button.clicked.connect(self.multi_convertor)
         self.convert_button.setObjectName("convert_button")
         # self.compress_button.setStyleSheet({background})
 
@@ -622,8 +682,7 @@ class App(QMainWindow):
     # ---------------------------Functions-----------------------------------
     
     def select_file(self):
-        
-       
+
         fileName, _ = QFileDialog.getOpenFileName(self,"Select File", "","All Files (*);;JPEG  (*.jpeg);;JPG  (*.jpg);;PNG  (*.png)")
         if fileName:
             try:
@@ -662,10 +721,6 @@ class App(QMainWindow):
             self.image_quality_i.setText(str(int(self.image_width/10)))
             self.comp_width = int(self.image_width/10)
 
-        
-                  
-    
-   
     def select_source_folder(self):
         folder = str(QFileDialog.getExistingDirectory(self, "Select Folder"))
         print(folder)
@@ -684,7 +739,7 @@ class App(QMainWindow):
         folder = str(QFileDialog.getExistingDirectory(self, "Select Folder"))
         print(folder)
         self.d_folder.setText(folder)
-   
+
     def quality_value_f(self):
         if self.qcombo_f.currentText() == "High":
             self.image_quality_f.setText(str(int(self.image_width)))

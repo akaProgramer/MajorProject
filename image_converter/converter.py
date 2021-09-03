@@ -16,10 +16,7 @@ import glob
 
 
 # Global Variable(s)
-if os.name == "nt":
-    SLASH = "\\"
-else:
-    SLASH = "/"
+SLASH = "/"
 
 
 class Convert:
@@ -57,10 +54,15 @@ class Convert:
         elif self.is_file is True:
             file_list = [self.source_directory]
         for file in file_list:
+            file = file.replace("\\", "/")
             print("Converting: " + file)
             im = Image.open(file, "r")
             rgb_image = im.convert("RGB")
-            target_file = self.target_directory + SLASH + file.split(SLASH)[-1].split(".")[0] + ".jpg"
+            if self.is_file is True:
+                target_directory = os.path.dirname(self.target_directory)
+            else:
+                target_directory = self.target_directory
+            target_file = target_directory + SLASH + file.split(SLASH)[-1].split(".")[0] + ".jpg"
             rgb_image.save(target_file)
             print("Converted: " + target_file)
             print("")
@@ -79,10 +81,15 @@ class Convert:
         else:
             file_list = [self.source_directory]
         for file in file_list:
+            file = file.replace("\\", "/")
             print("Converting: " + file)
             im = Image.open(file, "r")
             rgb_image = im.convert("RGB")
-            target_file = self.target_directory + SLASH + file.split(SLASH)[-1].split(".")[0] + ".png"
+            if self.is_file is True:
+                target_directory = os.path.dirname(self.target_directory)
+            else:
+                target_directory = self.target_directory
+            target_file = target_directory + SLASH + file.split(SLASH)[-1].split(".")[0] + ".png"
             rgb_image.save(target_file)
             print("Converted: " + target_file)
             print("")
@@ -103,10 +110,15 @@ class Convert:
 
         pdf = FPDF()
         for file in file_list:
+            file = file.replace("\\", "/")
             print("Adding file: " + file)
             pdf.add_page()
             pdf.image(file, 0, 0, 210, 297)
-        target_file = f"{self.target_directory}{SLASH}output.pdf"
+        if self.is_file is True:
+            target_directory = os.path.dirname(self.target_directory)
+        else:
+            target_directory = self.target_directory
+        target_file = f"{target_directory}{SLASH}output.pdf"
         pdf.output(target_file, "F")
         print("")
         print("Created PDF File -> " + target_file)
@@ -127,10 +139,15 @@ class Convert:
 
         pdf = FPDF()
         for file in file_list:
+            file = file.replace("\\", "/")
             print("Adding file: " + file)
             pdf.add_page()
             pdf.image(file, 0, 0, 210, 297)
-        target_file = f"{self.target_directory}{SLASH}output.pdf"
+        if self.is_file is True:
+            target_directory = os.path.dirname(self.target_directory)
+        else:
+            target_directory = self.target_directory
+        target_file = f"{target_directory}{SLASH}output.pdf"
         pdf.output(target_file, "F")
         print("")
         print("Created PDF File -> " + target_file)
