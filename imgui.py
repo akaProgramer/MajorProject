@@ -743,13 +743,13 @@ class App(QMainWindow):
             if okPressed and new_pic_name != '':
                 print(new_pic_name)
 
-                if oldpic[-4:] == ".jpeg":
+                if oldpic[-5:] == ".jpeg":
                     new_pic_name += ".jpeg"
 
-                if oldpic[-3:] == ".jpg":
+                if oldpic[-4:] == ".jpg":
                     new_pic_name += ".jpg"
 
-                if oldpic[-3:] == ".png":
+                if oldpic[-4:] == ".png":
                     new_pic_name += ".png"
 
                 else:
@@ -760,11 +760,9 @@ class App(QMainWindow):
 
                 newpic += new_pic_name
                 print(newpic)
-                self.compress_code(self, oldpic, newpic)
+                self.compress_code(oldpic, newpic, self.image_width)
                 self.statusBar().showMessage("Message: IMAGE COMPRESSED")
         except:
-            self.statusBar().showMessage("Message: please select appropriate file")
-        finally:
             self.statusBar().showMessage("Message: please select appropriate file")
 
     def resize_folder(self):
