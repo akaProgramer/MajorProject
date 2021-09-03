@@ -54,9 +54,15 @@ class App(QMainWindow):
         self.image_extractor_path.setText(self.path_fileName)
 
     def ocr_extractor(self,event):
-        print("akash")
         text_ext = OCR.text_extracter()
-        text_ext.extrated_text(self.path_fileName)
+        try:
+            text_ext.extrated_text(self.path_fileName)
+        except Exception as f:
+            self.statusBar().showMessage("Message: please select appropriate file")
+        finally: 
+            self.statusBar().showMessage("Message: please select appropriate file")
+        
+
 
 
     def initUI(self):
@@ -714,29 +720,37 @@ class App(QMainWindow):
         
         newpic = ''   
         new_pic_name, okPressed = QInputDialog.getText(self, "Save image as","Image name:", QLineEdit.Normal, "")
-        if okPressed and new_pic_name != '':
-            print(new_pic_name)
-            
-            if oldpic[-4:] == ".jpeg":
-                    new_pic_name += ".jpeg"
+        try:
+            if okPressed and new_pic_name != '':
+                print(new_pic_name)
                 
-            if oldpic[-3:] == ".jpg":
+                if oldpic[-4:] == ".jpeg":
+                        new_pic_name += ".jpeg"
+                    
+                if oldpic[-3:] == ".jpg":
+                        new_pic_name += ".jpg"
+                    
+                if oldpic[-3:] == ".png":
+                        new_pic_name += ".png"
+
+                else:
                     new_pic_name += ".jpg"
-                
-            if oldpic[-3:] == ".png":
-                    new_pic_name += ".png"
 
-            else:
-                new_pic_name += ".jpg"
+                for directory in directories[:-1]:
+                    newpic = newpic + directory + "/"
 
-            for directory in directories[:-1]:
-                newpic = newpic + directory + "/"
+                newpic+=new_pic_name
+                print(newpic)
+                self.compress_code(self, oldpic, newpic)
+                self.statusBar().showMessage("Message: IMAGE COMPRESSED")
+        except:
+            self.statusBar().showMessage("Message: please select appropriate file")
+        finally:
+            self.statusBar().showMessage("Message: please select appropriate file")
 
-            newpic+=new_pic_name
-            print(newpic)
+
         
-        self.compress_code(self, oldpic, newpic)
-        self.statusBar().showMessage("Message: IMAGE COMPRESSED")
+        
 
     def resize_folder(self):
         source_directory = self.folder_path.text()
@@ -746,26 +760,29 @@ class App(QMainWindow):
 
         for file in files:
             print(file)
-            if file[-4:] == '.png' or file[-4:] == '.jpg' or file[-5:] == '.jpeg' or file[-4:] == '.PNG' or file[-4:] == '.JPG' or file[-5:] == '.JPEG':
-                
-                oldpic = source_directory + "/" + file
-                newpic = dest_directory + "/" + file
-                
-                img = Image.open(oldpic)
-                self.image_width = img.width
-                # self.comp_width = self.image_width
-                self.image_quality_f.setText(str(self.image_width))
-                
-                print(oldpic)
-                print(newpic)
-                
-                
-                self.compress_code(oldpic, newpic, self.image_width)
+            try:
+                if file[-4:] == '.png' or file[-4:] == '.jpg' or file[-5:] == '.jpeg' or file[-4:] == '.PNG' or file[-4:] == '.JPG' or file[-5:] == '.JPEG':
+                    
+                    oldpic = source_directory + "/" + file
+                    newpic = dest_directory + "/" + file
+                    
+                    img = Image.open(oldpic)
+                    self.image_width = img.width
+                    # self.comp_width = self.image_width
+                    self.image_quality_f.setText(str(self.image_width))
+                    
+                    print(oldpic)
+                    print(newpic)
+                    
+                    
+                    self.compress_code(oldpic, newpic, self.image_width)
 
-            else:
-                print("ignored" + file)
-                continue
-        self.statusBar().showMessage("Message: FOLDER COMPRESSED")
+                else:
+                    print("ignored" + file)
+                    continue
+                self.statusBar().showMessage("Message: FOLDER COMPRESSED")
+            except:
+                self.statusBar().showMessage("Message: please select appropriate file")
 
     def compress_code(self, oldpic, newpic, mywidth):
         try:
@@ -776,7 +793,10 @@ class App(QMainWindow):
             img = img.resize((mywidth, img_size), PIL.Image.ANTIALIAS)
             img.save(newpic)
         except Exception as e:
-            self.statusBar().showMessage("Message : +e")
+            self.statusBar().showMessage("Message : lomda" + str(e))
+        finally:
+            self.statusBar().showMessage("Message: task cannot be completed")
+        
 
 
     
