@@ -1,0 +1,437 @@
+#main_window
+{
+    background-color: #291a52;
+    
+}
+#tool
+{
+    background: rgba(207, 15, 8, 0.938);
+    min-width: 1690px;
+    min-height: 80px;
+    max-width: 1690px;
+    max-height: 80px;
+    
+}
+ #tool_head
+{
+    font-size: 22pt;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+} 
+
+
+
+#img
+{
+
+    background-color: #202020;
+    min-width: 400px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 200px;
+    border-radius: 15px;
+    
+}
+#statusbar
+{
+    color: white;
+}
+#img:hover
+{
+   
+    background: rgba(255, 43, 124, 0.938);
+}
+
+
+
+
+
+#img_comp
+{
+    background-color: #262037;
+    min-width: 340px;
+    min-height: 550px;
+    max-width: 340px;
+    max-height: 550px;
+    border-radius: 15px;
+    
+    
+}
+#img_comp:hover
+{
+    min-width: 350px;
+    min-height: 590px;
+    max-width: 350px;
+    max-height: 590px;
+    background: rgba(255, 43, 124, 0.938);
+}
+
+
+#img_expansion
+{
+    background-color: #202020;
+    min-width: 400px;
+    min-height: 500px;
+    max-width: 400px;
+    max-height: 500px;
+    border-radius: 15px;
+}
+
+#single_img
+{
+    color:white;
+    font-weight: bold;
+}
+#s_img_p
+{
+    color:white;
+    font-weight: bold;
+    /* font-size: 48; */
+}
+#multi_img
+{
+    color:white;
+    font-weight: bold;
+}
+
+#m_img_p
+{
+    color:white;
+    font-weight: bold;
+    
+}
+
+#back_arrow
+{
+    color:white;
+    font-weight: bolder;
+    font-size: 35px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#back_arrow:hover
+{
+    background-color:white;
+    font-weight: bolder;
+    color:#202020;
+    margin-top: 13px;
+}
+
+#path
+{
+    max-width: 170px;
+    min-width: 170px;
+    color: #202020;
+    font-weight: bold;
+}
+#path:hover
+{
+    border: 3px solid rgba(255, 43, 124, 0.938);
+}
+#quality_path
+{
+    max-width: 130px;
+    min-width: 130px;
+    color: #202020;
+    margin-top: 18px;
+}
+#quality_path:hover
+{
+    border: 3px solid rgba(255, 43, 124, 0.938);
+}
+
+#browse_button
+{
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 23px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+
+#browse_button:hover
+{
+    background-color: rgba(255, 43, 124, 0.938);
+    font-weight: bolder;
+    color:white;
+}   
+
+#compress_button
+{
+    background-color:#202020;
+    max-width: 110px;
+    min-width: 110px;
+    max-height: 35px;
+    min-height: 35px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+#compress_button:hover
+{
+    background-color: rgba(255, 43, 124, 0.938);
+    font-weight: bolder;
+    color:white;
+    
+}
+
+/* *********************************img convertor*********************************** */
+#img_conv
+{
+    background-color: #262037;
+    
+    min-width: 340px;
+    min-height: 550px;
+    max-width: 340px;
+    max-height: 550px;
+    border-radius: 15px;
+    
+}
+#img_conv:hover
+{
+    background: #2a44d6;
+    
+}
+
+#img_conv_s
+{
+
+    background-color: #202020;
+    min-width: 400px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 200px;
+    border-radius: 15px;
+    
+}
+
+#img_conv_s:hover
+{
+   
+    background: #2a44d6;
+}
+
+
+#single_img_conv
+{
+    color:white;
+    font-weight: bold;
+}
+#s_img_p_conv
+{
+    color:white;
+    font-weight: bold;
+    /* font-size: 48; */
+}
+#multi_img_conv
+{
+    color:white;
+    font-weight: bold;
+}
+
+#m_img_p_conv
+{
+    color:white;
+    font-weight: bold;
+    
+}
+
+
+#browse_button_conv
+{
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 23px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+
+#browse_button_conv:hover
+{
+    background-color: #2a44d6;
+    font-weight: bolder;
+    color:white;
+}   
+
+#path_conv
+{
+    max-width: 170px;
+    min-width: 170px;
+    color: #202020;
+    font-weight: bold;
+}
+#path_conv:hover
+{
+    border: 3px solid #2a44d6;
+}
+#quality_path_conv
+{
+    max-width: 130px;
+    min-width: 130px;
+    color: #202020;
+    margin-top: 18px;
+}
+#quality_path_conv:hover
+{
+    border: 3px solid #2a44d6;
+}
+
+#convert_button
+{
+    background-color:#202020;
+    max-width: 110px;
+    min-width: 110px;
+    max-height: 35px;
+    min-height: 35px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+#convert_button:hover
+{
+    background-color: #2a44d6;
+    font-weight: bolder;
+    color:white;
+    
+}
+
+
+/* *************************************qr-code********************************************************************* */
+#qr
+{
+    background-color: #262037;
+    min-width: 340px;
+    min-height: 550px;
+    max-width: 340px;
+    max-height: 550px;
+    border-radius: 15px;
+   
+}
+#qr:hover
+{
+    background: rgba(224, 7, 188, 0.938);
+    
+        
+    
+    
+}
+
+#quality_path_qr
+{
+    max-width: 240px;
+    min-width: 240px;
+    max-height: 25px;
+    min-height: 25px;
+    color: #202020;
+    margin-top: 18px;
+}
+#quality_path_qr:hover
+{
+    border: 3px solid rgba(224, 7, 188, 0.938);
+}
+
+
+#generate_button
+{
+    background-color:#202020;
+    max-width: 110px;
+    min-width: 110px;
+    max-height: 35px;
+    min-height: 35px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#generate_button:hover
+{
+    background-color: rgba(224, 7, 188, 0.938);
+    font-weight: bolder;
+    color:white;
+    
+}
+
+
+
+/* *************************************************text extractor************************************************************************** */
+
+#extractor
+{
+    background-color: #262037;
+    min-width: 340px;
+    min-height: 550px;
+    max-width: 340px;
+    max-height: 550px;
+    border-radius: 15px;
+    
+}
+#extractor:hover
+{
+    background: rgba(133, 5, 184, 0.938);
+    
+    
+    
+}
+
+#quality_path_ext
+{
+    max-width: 180px;
+    min-width: 180px;
+    max-height: 23px;
+    min-height: 23px;
+    color: #202020;
+    margin-top: 18px;
+}
+#quality_path_ext:hover
+{
+    border: 3px solid rgba(133, 5, 184, 0.938);
+}
+
+#browse_button_ext
+{
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 23.5px;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+}
+
+#browse_button_ext:hover
+{
+    background-color: rgba(133, 5, 184, 0.938);
+    font-weight: bolder;
+    color:white;
+}   
+
+#ext_button
+{
+    background-color:#202020;
+    max-width: 110px;
+    min-width: 110px;
+    max-height: 36px;
+    min-height: 36px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#ext_button:hover
+{
+    background-color: rgba(133, 5, 184, 0.938);
+    font-weight: bolder;
+    color:white;
+    
+}
