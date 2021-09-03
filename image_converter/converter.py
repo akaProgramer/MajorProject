@@ -28,30 +28,34 @@ class Convert:
     and vice versa. Also, it can convert JPG, PNG image(s) to PDF file(s).
     """
 
-    def __init__(self, source_directory, target_directory):
+    def __init__(self, source_directory, target_directory, is_file):
         self.source_directory = source_directory
         self.target_directory = target_directory
+        self.is_file = is_file
 
+    def sanity_check(self) -> int:
         if not os.path.exists(self.source_directory):
-            print("Can't find source directory")
-            print("Exiting...")
-            exit(1)
+            print("Can't find source file/directory")
+            return 1
         if not os.path.exists(self.target_directory):
             print("Can't find target directory, creating...")
             os.makedirs(self.target_directory)
             print(f"Created target directory: {self.target_directory}")
             print("")
+        return 0
 
-    def png_to_jpg(self) -> None:
+    def png_to_jpg(self) -> int:
         """
         This function converts PNG image(s) to JPG image(s).
         """
 
-        file_list = glob.glob(f"{self.source_directory}{SLASH}*.png")
-        if not file_list:
-            print("No PNG file(s) found in source directory: " + self.source_directory)
-            print("Exiting...")
-            exit(1)
+        if self.is_file is False:
+            file_list = glob.glob(f"{self.source_directory}{SLASH}*.png")
+            if not file_list:
+                print("No PNG file(s) found in source directory: " + self.source_directory)
+                return 2
+        elif self.is_file is True:
+            file_list = [self.source_directory]
         for file in file_list:
             print("Converting: " + file)
             im = Image.open(file, "r")
@@ -60,17 +64,20 @@ class Convert:
             rgb_image.save(target_file)
             print("Converted: " + target_file)
             print("")
+        return 0
 
-    def jpg_to_png(self) -> None:
+    def jpg_to_png(self) -> int:
         """
         This function converts a JPG image to a PNG image.
         """
 
-        file_list = glob.glob(f"{self.source_directory}{SLASH}*.jpg")
-        if not file_list:
-            print("No JPG file(s) found in source directory: " + self.source_directory)
-            print("Exiting...")
-            exit(1)
+        if self.is_file is False:
+            file_list = glob.glob(f"{self.source_directory}{SLASH}*.jpg")
+            if not file_list:
+                print("No JPG file(s) found in source directory: " + self.source_directory)
+                return 2
+        else:
+            file_list = [self.source_directory]
         for file in file_list:
             print("Converting: " + file)
             im = Image.open(file, "r")
@@ -79,17 +86,20 @@ class Convert:
             rgb_image.save(target_file)
             print("Converted: " + target_file)
             print("")
+        return 0
 
-    def jgp_to_pdf(self) -> None:
+    def jgp_to_pdf(self) -> int:
         """
         This function converts JPG image(s) to a PDF file.
         """
 
-        file_list = glob.glob(f"{self.source_directory}{SLASH}*.jpg")
-        if not file_list:
-            print("No JPG file(s) found in source directory: " + self.source_directory)
-            print("Exiting...")
-            exit(1)
+        if self.is_file is False:
+            file_list = glob.glob(f"{self.source_directory}{SLASH}*.jpg")
+            if not file_list:
+                print("No JPG file(s) found in source directory: " + self.source_directory)
+                return 2
+        else:
+            file_list = [self.source_directory]
 
         pdf = FPDF()
         for file in file_list:
@@ -100,17 +110,20 @@ class Convert:
         pdf.output(target_file, "F")
         print("")
         print("Created PDF File -> " + target_file)
+        return 0
 
-    def png_to_pdf(self) -> None:
+    def png_to_pdf(self) -> int:
         """
         This function converts PNG image(s) to a PDF File.
         """
 
-        file_list = glob.glob(f"{self.source_directory}{SLASH}*.png")
-        if not file_list:
-            print("No PNG file(s) found in source directory: " + self.source_directory)
-            print("Exiting...")
-            exit(1)
+        if self.is_file is False:
+            file_list = glob.glob(f"{self.source_directory}{SLASH}*.png")
+            if not file_list:
+                print("No PNG file(s) found in source directory: " + self.source_directory)
+                return 2
+        else:
+            file_list = [self.source_directory]
 
         pdf = FPDF()
         for file in file_list:
@@ -121,6 +134,7 @@ class Convert:
         pdf.output(target_file, "F")
         print("")
         print("Created PDF File -> " + target_file)
+        return 0
 
 
 def main():
@@ -137,9 +151,6 @@ def main():
     if not choice:
         print("Exiting...")
         exit(0)
-    if type(choice) is not int:
-        print("Invalid choice, exiting...")
-        exit(1)
 
     print("")
     source_directory = str(input("Please enter the source directory: "))
@@ -149,22 +160,44 @@ def main():
         exit(1)
     target_directory = str(input("Please enter the destination directory: "))
     print("")
+    is_file = input("Is source a single file? (1 for Yes or 2 for No): ")
+    if is_file == "1":
+        is_file = True
+    elif is_file == "2":
+        is_file = False
+    else:
+        is_file = False
     if not target_directory:
         print("Exiting...")
         exit(1)
 
     if choice == "1":
-        converter = Convert(source_directory, target_directory)
-        converter.png_to_jpg()
+        converter = Convert(source_directory, target_directory, is_file)
+        if converter.sanity_check() == 1:
+            print("Exiting...")
+            exit(1)
+        if converter.png_to_jpg() == 2:
+            print("Exiting...")
+            exit(1)
     elif choice == "2":
-        converter = Convert(source_directory, target_directory)
+        converter = Convert(source_directory, target_directory, is_file)
+        if converter.sanity_check() == 1:
+            print("Exiting...")
+            exit(1)
         converter.jpg_to_png()
     elif choice == "3":
-        converter = Convert(source_directory, target_directory)
+        converter = Convert(source_directory, target_directory, is_file)
+        if converter.sanity_check() == 1:
+            print("Exiting...")
+            exit(1)
         converter.jgp_to_pdf()
     elif choice == "4":
-        converter = Convert(source_directory, target_directory)
+        converter = Convert(source_directory, target_directory, is_file)
+        if converter.sanity_check() == 1:
+            print("Exiting...")
+            exit(1)
         converter.png_to_pdf()
+
 
 if __name__ == "__main__":
     main()
