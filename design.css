@@ -108,7 +108,8 @@
     border: 3px solid rgba(255, 43, 124, 0.938);
 }
 
-#quality_path {
+
+/* #quality_path {
     max-width: 130px;
     min-width: 130px;
     color: #202020;
@@ -116,8 +117,7 @@
 }
 
 #quality_path:hover {
-    border: 3px solid rgba(255, 43, 124, 0.938);
-}
+    border: 3px solid rgba(255, 43, 124, 0.938);} */
 
 #browse_button {
     max-width: 40px;
