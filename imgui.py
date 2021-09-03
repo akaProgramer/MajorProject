@@ -22,7 +22,7 @@ class App(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        self.title = 'Image Resizer'
+        self.title = 'GENXCO Utility Tool'
         self.left = 100
         self.top = 50
         self.width =1690
@@ -45,6 +45,7 @@ class App(QMainWindow):
         generate.generate()
         generate.save()
         open_file("qrcode.png")
+        self.statusBar().showMessage("Message: QR Code generated")
 
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -721,7 +722,7 @@ class App(QMainWindow):
             newpic+=new_pic_name
             print(newpic)
         
-        self.compress_code(oldpic, newpic)
+        self.compress_code(self, oldpic, newpic)
         self.statusBar().showMessage("Message: IMAGE COMPRESSED")
 
     def resize_folder(self):
